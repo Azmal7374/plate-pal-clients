@@ -6,10 +6,12 @@ import envConfig from "@/src/config/envConfig";
 import axios from "axios";
 import { cookies } from "next/headers";
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: envConfig.baseApi,
 });
 
+
+// Request Interceptor:
 axiosInstance.interceptors.request.use(
   function (config) {
     const cookieStore = cookies();
@@ -25,6 +27,7 @@ axiosInstance.interceptors.request.use(
   },
 );
 
+// Response Interceptor:
 axiosInstance.interceptors.response.use(
   function (response) {
     return response;
