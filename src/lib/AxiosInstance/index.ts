@@ -1,7 +1,4 @@
-/* eslint-disable padding-line-between-statements */
-/* eslint-disable prettier/prettier */
-/* eslint-disable import/order */
-/* eslint-disable prettier/prettier */
+
 import envConfig from "@/src/config/envConfig";
 import axios from "axios";
 import { cookies } from "next/headers";
