@@ -1,12 +1,11 @@
-
-import envConfig from "@/src/config/envConfig";
 import axios from "axios";
 import { cookies } from "next/headers";
+import envConfig from "@/src/config/envConfig";
+import { getAccessToken } from "@/src/services/AuthService";
 
 export const axiosInstance = axios.create({
   baseURL: envConfig.baseApi,
 });
-
 
 // Request Interceptor:
 axiosInstance.interceptors.request.use(
@@ -17,6 +16,7 @@ axiosInstance.interceptors.request.use(
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
+
     return config;
   },
   function (error) {
@@ -34,7 +34,7 @@ axiosInstance.interceptors.response.use(
 
     if (error?.response.status === 401 && !config?.sent) {
       config.sent = true;
-      const res = await getNewAccessToken();
+      const res = await getAccessToken();
       const accessToken = res.data.accessToken;
 
       config.headers["Authirization"] = `Bearer ${accessToken}`;
