@@ -169,7 +169,7 @@ export const useEditCommentRecipe = () => {
     });
   };
   
-  export const useGetAllRecipiesForAdmin = () => {
+export const useGetAllRecipiesForAdmin = () => {
     return useQuery({
       queryKey: ["GET_ALL_RECIPIES_FOR_ADMIN"],
       queryFn: async () => await getAllRecipiesForAdmin(),

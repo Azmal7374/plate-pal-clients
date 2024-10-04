@@ -1,9 +1,10 @@
-import React from 'react';
+/* eslint-disable prettier/prettier */
+import Banner from '@/src/components/home/Banner';
 
 const HomePage = () => {
     return (
         <div>
-            <h1>This is Home Page</h1>
+           <Banner/>
         </div>
     );
 };

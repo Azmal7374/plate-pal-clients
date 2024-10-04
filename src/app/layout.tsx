@@ -1,31 +1,24 @@
-import "../styles/globals.css";
-import { Metadata, Viewport } from "next";
-
+/* eslint-disable prettier/prettier */
+/* eslint-disable import/order */
+import type { Metadata } from "next";
+import "./globals.css";
 import { Providers } from "../lib/providers";
 
 export const metadata: Metadata = {
-  title: "Next App",
-  description: "This is a next app",
-};
-
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+  title: "Apollo Gears",
+  description: "Next Level Riding Sharing Service",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <head />
-      <body>
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          {children}
+    <html lang="en">
+      <body className={` antialiased`}>
+      <Providers>
+          <div className="mx-auto container">{children}</div>
         </Providers>
       </body>
     </html>
