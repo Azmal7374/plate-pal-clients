@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={` antialiased`}>
       <Providers>
-          <div className="mx-auto container">{children}</div>
+          <div className="">{children}</div>
         </Providers>
       </body>
     </html>

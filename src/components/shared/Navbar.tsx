@@ -11,7 +11,7 @@ import { Button } from "@nextui-org/react";
 import { useUser } from "@/src/utlis/useruser";
 import React from "react";
 import { useRouter } from "next/navigation";
-import NavbarDropdown from "../Navabr/NavbarDropDown";
+import NavbarDropdown from "./Navabr/NavbarDropDown";
 
 export default function NavBar() {
   const { user } = useUser();

@@ -1,3 +1,5 @@
+/* eslint-disable padding-line-between-statements */
+/* eslint-disable react/jsx-sort-props */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Spinner } from "@nextui-org/react";
 import { useFormStatus } from "react-dom";
