@@ -3,30 +3,37 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/order */
 "use client";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
 import { Cog } from "lucide-react";
 import Link from "next/link";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { Button } from "@nextui-org/react"; // Button component from @nextui-org
+import { Button } from "@nextui-org/react";
 import { useUser } from "@/src/utlis/useruser";
 import React from "react";
+import { useRouter } from "next/navigation";
+import NavbarDropdown from "../Navabr/NavbarDropDown";
 
 export default function NavBar() {
-  const { user, loading } = useUser(); 
-  const routeMap: Record<string, string> = {
-    user: "/dashboard",
-    admin: "/dashboard/admin",
-  };
+  const { user } = useUser();
+  const router = useRouter();
+
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "Recipe", href: "/recipe" },
+    { name: "About US", href: "/about" },
+    { name: "Contact US", href: "/contact" },
   ];
+
 
   return (
     <Navbar maxWidth="2xl"   onMenuOpenChange={setIsMenuOpen}>
+      <NavbarMenuToggle
+aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+className="sm:hidden"
+/>
       <NavbarBrand>
         <Link className="flex" href="/">
           <Cog />
@@ -34,28 +41,42 @@ export default function NavBar() {
         </Link>
       </NavbarBrand>
 
-      <NavbarContent className=" sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link href="/cars">Recipe</Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#">Customers</Link>
-        </NavbarItem>
-        <NavbarItem>
-          {!loading && user ? (
-            <Link href={routeMap[user?.role]}>Dashboard</Link>
-          ) : (
-            <Link href="/login">Login</Link>
-          )}
-        </NavbarItem>
+  
+
+<NavbarContent className="hidden sm:flex gap-4" justify="center">
+        {menuItems.map((item, index) => (
+          <NavbarItem key={index}>
+            <Link
+              // className={`text-gray-800 font-bold text-lg px-2 py-1 hover:bg-[#FEFAE0] rounded-lg transition duration-300 ease-in-out`}
+              color="foreground"
+              href={item.href}
+            >
+              {item.name}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
-      
+
       <NavbarContent justify="end">
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>
-      </NavbarContent>
 
+        {user?.email ? (
+          <NavbarItem className=" sm:flex gap-2">
+            <NavbarDropdown />
+          </NavbarItem>
+        ) : (
+          <NavbarItem className=" sm:flex gap-2">
+            <Button
+              className="bg-[#FEFAE0] text-lg text-gray-800 font-bold"
+              onClick={() => router.push("/login")}
+            >
+              Login
+            </Button>
+          </NavbarItem>
+        )}
+      </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.name}-${index}`}>
@@ -66,5 +87,7 @@ export default function NavBar() {
         ))}
       </NavbarMenu>
     </Navbar>
+
+
   );
 }
