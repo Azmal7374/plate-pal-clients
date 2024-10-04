@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/no-unescaped-entities */
 "use client"
 // eslint-disable-next-line import/order
 import { Card, CardBody } from "@nextui-org/react";
