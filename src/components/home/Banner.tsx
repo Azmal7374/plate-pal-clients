@@ -12,7 +12,7 @@ export default function Banner() {
         <div className="md:flex gap-4 items-center  justify-between">
           <div className="md:w-2/5 ">
             <h1 className="text-6xl font-bold mb-2 text-default-900">
-            Discover and Share the World's<span className="text-red-500"> Best </span>{" "}
+            Discover and Share the World's<span className="text-[#CDC2A5]"> Best </span>{" "}
             Recipes
             </h1>
             <h4 className=" text-xl text-gray-500 my-4">

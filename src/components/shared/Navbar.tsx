@@ -11,7 +11,7 @@ import { Button } from "@nextui-org/react";
 import { useUser } from "@/src/utlis/useruser";
 import React from "react";
 import { useRouter } from "next/navigation";
-import NavbarDropdown from "./Navabr/NavbarDropDown";
+import NavbarDropdown from "./DropDown";
 
 export default function NavBar() {
   const { user } = useUser();
@@ -23,8 +23,8 @@ export default function NavBar() {
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "Recipe", href: "/recipe" },
-    { name: "About US", href: "/about" },
-    { name: "Contact US", href: "/contact" },
+    { name: "About US", href: "/about-us" },
+    { name: "Contact US", href: "/contact-us" },
   ];
 
 

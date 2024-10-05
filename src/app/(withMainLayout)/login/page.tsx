@@ -1,9 +1,11 @@
-import React from 'react';
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/self-closing-comp */
+import CommonContentLoginPage from './CommonContext';
 
 const LoginPage = () => {
     return (
         <div>
-            <h1>This is Login Page</h1>
+          <CommonContentLoginPage></CommonContentLoginPage>
         </div>
     );
 };
