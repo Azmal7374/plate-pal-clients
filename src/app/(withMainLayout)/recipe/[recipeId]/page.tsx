@@ -32,7 +32,6 @@ const RecipeDetails = () => {
   const { user } = useUser();
 
   const { data, isLoading } = useGetSingleRecipe(id as string);
-
   const {
     mutate: upvoteRecipe,
     isPending: isUpvotePending,
@@ -62,7 +61,7 @@ const RecipeDetails = () => {
 
   const recipe = data?.data?.result;
   const postOwner = data?.data?.postOwner;
-
+  console.log(recipe)
   // Calculate average rating from the `rating` array
   const calculateAverageRating = (
     ratings: { id: string; rating: number }[]

@@ -1,29 +1,32 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/jsx-sort-props */
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const HowItWorks = () => {
-  const steps = [
+  const rules = [
     {
-      title: "Create Your Profile",
+      title: "Craft Your Culinary Identity",
       description:
-        "Sign up and set up your personal cooking profile. Add your bio, favorite cuisines, and connect with other food enthusiasts.",
+        "Begin by creating your personalized cooking profile. Introduce yourself, highlight your favorite cuisines, and engage with a passionate community of food lovers.",
     },
     {
-      title: "Explore and Share Recipes",
+      title: "Discover & Share Culinary Delights",
       description:
-        "Browse through a vast collection of recipes from all around the world. Share your own unique creations by uploading recipes with photos, ingredients, and step-by-step instructions.",
+        "Explore an extensive collection of global recipes, or share your culinary masterpieces with detailed ingredients, images, and step-by-step instructions.",
     },
     {
-      title: "Follow and Connect",
+      title: "Connect & Inspire",
       description:
-        "Follow your favorite chefs and home cooks to stay updated on their latest recipes. Build your network by connecting with others and gain inspiration from their cooking styles.",
+        "Follow your favorite chefs and home cooks to stay inspired by their latest creations. Build meaningful connections and enrich your culinary journey through shared experiences.",
     },
     {
-      title: "Rate, Comment, and Upvote",
+      title: "Engage, Appreciate, & Elevate",
       description:
-        "Rate dishes you've tried, leave comments, and upvote your favorite recipes. Engage with the community by providing feedback and recommendations.",
+        "Share your thoughts by rating, commenting, and upvoting recipes you love. Be a part of the conversation and elevate the community with your valuable feedback.",
     },
   ];
 
@@ -34,27 +37,34 @@ const HowItWorks = () => {
     <div>
       <div className="mt-24 pb-20">
         <div className="mb-4 flex items-center justify-center gap-8 sm:mb-8 md:mb-5">
-          <div className="flex items-center justify-center gap-12">
-            <h2 className="!text-5xl font-bold text-gray-900 lg:text-4xl">
-              How It <span className="text-secondary">Works</span>
-            </h2>
-          </div>
+        <div className="flex items-center justify-center gap-12" ref={ref}>
+      <motion.h2
+        className="!text-5xl font-bold text-default-900 lg:text-4xl"
+        initial={{ opacity: 0, y: -20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        How It <span className="text-[#CDC2A5]">Works</span>
+      </motion.h2>
+    </div>
         </div>
 
         <div ref={ref} className="p-4 max-w-xl mx-auto mt-10">
-          {steps.map((step, index) => (
+          {rules.map((step, index) => (
             <motion.div
               key={index}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               className="flex mb-6"
               initial={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className="mr-4 flex flex-col items-center">
-                <div>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-blue-800">
+                <motion.div whileHover={{ scale: 1.2 }}>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#F78014]">
                     <svg
-                      className="h-6 w-6 text-blue-800"
+                      className="h-6 w-6 text-[#F78014]"
                       fill="none"
                       height="24"
                       stroke="currentColor"
@@ -70,22 +80,27 @@ const HowItWorks = () => {
                       <path d="M6 13l6 6" />
                     </svg>
                   </div>
-                </div>
-                <div className="h-full w-px bg-gray-400 " />
+                </motion.div>
+                <div className="h-full w-px bg-[#CDC2A5] " />
               </div>
 
               <div className="pt-1 pb-8">
-                <p className="mb-2 text-2xl font-bold text-gray-900">
+                <p className="mb-2 text-2xl font-bold text-default-900">
                   {step.title}
                 </p>
                 <p className="text-gray-700 text-lg">{step.description}</p>
               </div>
             </motion.div>
           ))}
-          <div className="flex">
+          <motion.div
+            className="flex"
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: rules.length * 0.6 }}
+          >
             <div className="mr-4 flex flex-col items-center">
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-blue-900 bg-blue-900">
+              <motion.div whileHover={{ scale: 1.2 }}>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#F78014] bg-[#F78014]">
                   <svg
                     className="h-6 w-6 text-white"
                     fill="none"
@@ -101,14 +116,14 @@ const HowItWorks = () => {
                     <path d="M5 12l5 5l10 -10" />
                   </svg>
                 </div>
-              </div>
+              </motion.div>
             </div>
             <div className="pt-1 ">
-              <p className="mb-2 text-xl font-bold text-gray-900">
-                And you are ready to be a part of the community!!
+              <p className="mb-2 text-xl font-bold text-default-900">
+                And you're all set to join the community!
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

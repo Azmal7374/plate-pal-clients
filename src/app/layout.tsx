@@ -5,8 +5,8 @@ import "./globals.css";
 import { Providers } from "../lib/providers";
 
 export const metadata: Metadata = {
-  title: "Apollo Gears",
-  description: "Next Level Riding Sharing Service",
+  title: "Plate Pal",
+  description: "Next Level Recipe Sharing Service",
 };
 
 export default function RootLayout({

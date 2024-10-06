@@ -43,42 +43,40 @@ const CommonContentLoginPage = () => {
     <div>
       <div className="">
         <div className="py-16">
-          <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-            {/* Left Image */}
+          <div className="flex  overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
             <motion.div
               animate={{ opacity: 1, x: 0 }}
               className="hidden lg:block lg:w-1/2"
               initial={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
               <img
                 alt=""
-                src="https://img.freepik.com/free-vector/secure-login-concept-illustration_114360-4685.jpg?w=740&t=st=1724554960~exp=1724555560~hmac=6064a75a7f58f77ff4a136410a04650dffc247f6acb5377d73ff67c9986a77a5"
+                src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg?ga=GA1.1.1302518135.1720608685&semt=ais_hybrid"
               />
             </motion.div>
 
-            {/* Right Form */}
             <motion.div
               animate={{ opacity: 1, y: 0 }}
               className="w-full p-8 lg:w-1/2"
               initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-2xl font-semibold text-gray-700 text-center">
-                CookNest
+              <h2 className="text-2xl font-semibold text-default-700 text-center">
+                Plate Pal
               </h2>
-              <p className="text-xl text-gray-600 text-center">
-                Login to manage recipes!
+              <p className="text-xl text-default-600 text-center">
+              Log in to curate and manage your favorite recipes!
               </p>
 
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mt-4">
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label className="block text-default-700 text-sm font-bold mb-2">
                     Email Address
                   </label>
                   <input
                     {...register("email", { required: "Email is required" })} // Register with validation
-                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                    className=" text-default-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                     type="email"
                   />
                 </div>
@@ -92,15 +90,15 @@ const CommonContentLoginPage = () => {
                   <input
                     {...register("password", {
                       required: "Password is required",
-                    })} // Register with validation
-                    className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                    })} 
+                    className=" text-defult-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                     type="password"
                   />
                 </div>
 
                 <div className="mt-8">
                   <Button
-                    className="bg-button hover:bg-button-dark text-white font-bold py-2 px-4 w-full rounded text-lg"
+                    className="bg-[#F78014] hover:bg-button-dark text-white font-bold py-2 px-4 w-full rounded text-lg"
                     isDisabled={isPending}
                     isLoading={isPending}
                     type="submit"
@@ -111,23 +109,23 @@ const CommonContentLoginPage = () => {
               </form>
 
               <div className="mt-4">
-                <p className="text-xl text-gray-600">
-                  New to this platform?{" "}
+                <p className="text-xl text-default-900">
+                 New around here?{" "}
                   <Link
-                    className="hover:underline text-blue-600"
+                    className="hover:underline text-[#F78014]"
                     href="/register"
                   >
-                    Sign up
+                    Create an account and join the culinary community!
                   </Link>
                 </p>
 
-                <p className="text-lg text-gray-600 mt-3">
-                  Forgot your password?{" "}
+                <p className="text-lg text-default-900 mt-3">
+                Lost your password?{" "}
                   <Link
-                    className="hover:underline text-blue-600"
+                    className="hover:underline text-[#F78014]"
                     href="/forgot-password"
                   >
-                    Reset password from here
+                   No worries—reset it effortlessly here!
                   </Link>
                 </p>
               </div>

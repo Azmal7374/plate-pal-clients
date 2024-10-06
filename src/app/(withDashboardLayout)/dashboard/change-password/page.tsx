@@ -43,23 +43,23 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="bg-[#F5EDED] min-h-screen flex items-center justify-center py-12">
-      <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-        <h2 className="text-2xl font-bold text-gray-700 text-center mb-6">
+    <div className="  min-h-screen flex items-center justify-center py-12">
+      <div className="p-8 max-w-md w-full">
+        <h2 className="text-2xl font-bold text-default-700 text-center mb-6">
           Change Password
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Email Field */}
           <div className="mb-4">
             <label
-              className="block text-gray-700 font-bold mb-2 text-lg"
+              className="block text-default-700 font-bold mb-2 text-lg"
               htmlFor="email"
             >
               Email Address
             </label>
             <input
               readOnly
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 hover:cursor-not-allowed font-bold text-lg`}
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:cursor-not-allowed font-bold text-lg`}
               id="email"
               type="email"
               value={user?.email}
@@ -69,7 +69,7 @@ const ChangePassword = () => {
           {/* Current Password Field */}
           <div className="mb-4">
             <label
-              className="block text-gray-700 font-bold mb-2 text-lg"
+              className="block text-default-700 font-bold mb-2 text-lg"
               htmlFor="currentPassword"
             >
               Current Password
@@ -77,7 +77,7 @@ const ChangePassword = () => {
             <input
               {...register("password")}
               required
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 font-bold text-lg`}
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  font-bold text-lg`}
               id="password"
               type="password"
             />
@@ -86,7 +86,7 @@ const ChangePassword = () => {
           {/* New Password Field */}
           <div className="mb-6">
             <label
-              className="block text-gray-700 font-bold mb-2 text-lg"
+              className="block text-default-700 font-bold mb-2 text-lg"
               htmlFor="newPassword"
             >
               New Password
@@ -94,7 +94,7 @@ const ChangePassword = () => {
             <input
               {...register("newPassword")}
               required
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 font-bold text-lg`}
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  font-bold text-lg`}
               id="newPassword"
               type="password"
             />
@@ -103,7 +103,7 @@ const ChangePassword = () => {
           {/* Submit Button */}
           <div className="flex items-center justify-between">
             <Button
-              className="bg-button hover:bg-button-dark text-white text-lg font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-[#F78014] w-full hover:bg-button-dark text-white text-lg font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               isDisabled={isPending}
               isLoading={isPending}
               type="submit"

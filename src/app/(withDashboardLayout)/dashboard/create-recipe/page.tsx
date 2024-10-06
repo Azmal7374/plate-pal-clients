@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // /* eslint-disable jsx-a11y/tabindex-no-positive */
 "use client";
 import React, { useState, useRef, useEffect } from "react";
@@ -98,7 +99,7 @@ const CreateRecipe = () => {
   return (
     <div className="w-[80%] mx-auto my-10">
       <h1 className="text-center text-2xl md:text-4xl font-bold text-gray-900">
-        Create your <span className="text-secondary">recipe</span> post
+      Craft Your<span className="text-[#CDC2A5]"> Culinary</span> Masterpiece
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -107,7 +108,7 @@ const CreateRecipe = () => {
           <div className="flex flex-col">
             <Input label="Recipe Title" type="text" {...register("title")} />
             {errors.title && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-danger text-sm mt-1">
                 {errors.title.message}
               </p>
             )}
@@ -121,7 +122,7 @@ const CreateRecipe = () => {
               {...register("image")}
             />
             {errors.image && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-danger text-sm mt-1">
                 {errors.image.message}
               </p>
             )}
@@ -138,7 +139,7 @@ const CreateRecipe = () => {
             onChange={() => {}}
           />
           {errors.content && (
-            <p className="text-red-500 text-sm mt-1">Content is required.</p>
+            <p className="text-danger text-sm mt-1">Content is required.</p>
           )}
         </div>
 
@@ -147,7 +148,7 @@ const CreateRecipe = () => {
             <div>
               <Select
                 className="max-w-xs font-bold mb-5"
-                label="Do you want to post this as premium content?"
+                label="Create Premium Culinary Masterpiece?"
                 onChange={(e) => setIsPremium(e.target.value === "yes")}
               >
                 <SelectItem key={"yes"} value="Yes">
@@ -159,14 +160,13 @@ const CreateRecipe = () => {
               </Select>
             </div>
           ) : (
-            <div className="mb-5 text-2xl text-gray-900 ">
-              Get a <span className="text-secondary">premium membership</span>{" "}
-              to post this as premium content.
+            <div className="mb-5 text-2xl text-default-900 ">
+            Elevate your culinary journey by securing a <span className="text-[#CDC2A5]">premium membership.</span>
             </div>
           )}
 
           <Button
-            className="bg-button font-bold text-lg"
+            className="bg-[#F78014] text-white font-bold text-xl"
             isDisabled={isPending}
             isLoading={isPending}
             type="submit"

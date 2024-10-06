@@ -72,7 +72,7 @@ export default function NavbarDropdown() {
     <Dropdown>
       <DropdownTrigger>
         <Avatar
-          className="cursor-pointer bg-gray-300"
+          className="cursor-pointer"
           src={user?.profilePicture}
         />
       </DropdownTrigger>
@@ -83,7 +83,7 @@ export default function NavbarDropdown() {
           .map((item, index) => (
             <DropdownItem
               key={index}
-              className={`${item.isDanger ? "text-danger" : ""}`}
+              className={`${item.isDanger ? "" : ""}border-[#F78014] hover:border-b-2`}
               color={item.isDanger ? "danger" : "default"}
               onClick={item.action}
             >

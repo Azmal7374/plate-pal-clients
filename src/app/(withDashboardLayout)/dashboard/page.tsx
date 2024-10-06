@@ -105,10 +105,10 @@ const Dashboard = () => {
 
   return (
     <div className="py-10">
-      <div className="w-[90%] sm:w-[70%] lg:w-[50%] mx-auto pb-5 rounded-lg bg-[#FCDE70]">
+      <div className="w-[90%] sm:w-[70%] lg:w-[50%] mx-auto pb-5 rounded-lg bg-[#F2E5BF]">
         <div className="flex justify-center items-center py-4">
           <img
-            alt="Profile Pic"
+            alt="profile images"
             className="rounded-full object-cover h-24 w-24"
             src={data?.userData?.profilePicture}
           />
@@ -125,7 +125,7 @@ const Dashboard = () => {
 
         {user?.role === "user" && (
           <div className="flex gap-3 px-5 mt-3">
-            <div className="border-gray-600 border-2 rounded-lg text-gray-900 w-[50%]">
+            <div className="border-[#F78014] border-2 rounded-lg text-gray-900 w-[50%]">
               <div className="text-lg sm:text-xl font-bold text-center">
                 Follower
               </div>
@@ -134,7 +134,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="border-gray-600 border-2 rounded-lg text-gray-900 w-[50%]">
+            <div className="border-[#F78014] border-2 rounded-lg text-gray-900 w-[50%]">
               <div className="text-lg sm:text-xl font-bold text-center">
                 Following
               </div>
@@ -145,19 +145,19 @@ const Dashboard = () => {
           </div>
         )}
 
-        <div className="border-gray-600 border-2 rounded-lg text-gray-900 mt-5 mx-5 p-4 text-lg sm:text-xl font-bold">
+        <div className="border-[#F78014] border-2 rounded-lg text-gray-900 mt-5 mx-5 p-4 text-lg sm:text-xl font-bold">
           <h1>Your Bio: {data?.userData?.bio}</h1>
         </div>
 
         <div className="w-full flex flex-col sm:flex-row gap-5 justify-center items-center mt-5">
-          <Button className="bg-button font-bold text-lg" onPress={onOpen}>
+          <Button className="bg-button font-bold text-lg hover:border-b-2 border-[#F78014]" onPress={onOpen}>
             Update Profile Info
           </Button>
 
           {data?.userData?.premiumMembership === false &&
             user?.role === "user" && (
               <Button
-                className="bg-secondary font-bold text-lg"
+                className="bg-[#F78014] font-bold text-lg"
                 isDisabled={isPending}
                 isLoading={isPending}
                 onClick={handleBecomePremiumMember}
@@ -169,7 +169,8 @@ const Dashboard = () => {
 
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
           <ModalContent>
-            <div className="p-4 text-lg">Update Profile Info</div>
+            <div className="p-4 text-lg 
+text-[#CDC2A5] font-bold">Update Profile Info</div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="px-4 pb-4 flex flex-col gap-3">
                 <Input
@@ -195,7 +196,7 @@ const Dashboard = () => {
               </div>
 
               <div className="flex justify-center pb-4">
-                <Button className="bg-button" type="submit">
+                <Button className="bg-[#F78014] text-white text-xl" type="submit">
                   Save Changes
                 </Button>
               </div>
@@ -209,7 +210,8 @@ const Dashboard = () => {
           {data?.userPostedRecipeData?.length !== 0 && (
             <div className="text-gray-800 text-center text-3xl sm:text-4xl font-bold mt-10">
               <h1>
-                Your <span className="text-secondary">Recipes</span>
+                Your <span className="
+text-[#CDC2A5]">Recipes</span>
               </h1>
 
               <div className="w-[90%] sm:w-[80%] mt-7 mx-auto mb-7 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -225,6 +227,7 @@ const Dashboard = () => {
                   label="Search Recipe"
                   type="text"
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  
                 />
               </div>
             </div>
@@ -252,7 +255,8 @@ const Dashboard = () => {
               <div className="flex justify-center mt-10">
                 <button
                   className={`mx-2 px-3 py-1 font-bold text-lg rounded ${
-                    currentPage === 1 ? "bg-gray-400" : "bg-button text-white"
+                    currentPage === 1  ? "bg-[#F78014] text-white"
+                          : "bg-[#CDC2A5]"
                   }`}
                   disabled={currentPage === 1}
                   onClick={() => currentPage > 1 && paginate(currentPage - 1)}
@@ -269,8 +273,8 @@ const Dashboard = () => {
                       key={index + 1}
                       className={`mx-2 px-3 py-1 font-bold text-lg rounded ${
                         currentPage === index + 1
-                          ? "bg-button text-white"
-                          : "bg-gray-400"
+                          ? "bg-[#F78014] text-white"
+                          : "bg-[#CDC2A5]"
                       }`}
                       onClick={() => paginate(index + 1)}
                     >
@@ -283,8 +287,8 @@ const Dashboard = () => {
                   className={`mx-2 px-3 py-1 font-bold text-lg rounded ${
                     currentPage ===
                     Math.ceil(filteredRecipes?.length / cardsPerPage)
-                      ? "bg-gray-400"
-                      : "bg-button text-white"
+                      ? "bg-[#CDC2A5] text-white"
+                          : " bg-[#F78014]"
                   }`}
                   disabled={
                     currentPage ===

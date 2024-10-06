@@ -1,12 +1,15 @@
+/* eslint-disable react/jsx-sort-props */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable import/order */
+/* eslint-disable unused-imports/no-unused-imports */
 "use client";
-
 /* eslint-disable prettier/prettier */
 import { Button } from "@nextui-org/button";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import Link from "next/link";
 import { useDeleteRecipe } from "@/src/hooks/recipe.hook";
-
+import { motion } from 'framer-motion'
 
 const RecipeCard = ({
   recipe,
@@ -61,44 +64,43 @@ const RecipeCard = ({
   };
 
   return (
+
     <div className="relative bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      {/* Recipe Image */}
-      <img
+      {/* Image Section with Animation */}
+      <motion.img
         alt={recipe?.title}
         className={`w-full h-56 object-cover ${
           recipe?.isPremium && !isPremiumUser ? "filter blur-sm" : ""
         }`}
         src={recipe?.image}
+        whileHover={{ scale: 1.1 }} // Scale up on hover
+        transition={{ duration: 0.4 }} // Smooth transition
       />
-
-      {/* Overlay for Premium Content */}
+    
+      {/* Premium Overlay */}
       {recipe?.isPremium && !isPremiumUser && (
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="text-white text-center">
-            <h2 className="text-xl font-bold">
-              Buy premium membership to view this
-            </h2>
+            <h2 className="text-xl font-bold">Buy premium membership to view this</h2>
           </div>
         </div>
       )}
-
+    
       {/* Recipe Content */}
       {!recipe?.isPremium || isPremiumUser ? (
         <div className="p-6">
-          {/* Title */}
           <h3 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-1">
             {recipe?.title}
           </h3>
-
-          {/* Average Rating */}
-          <div className="mt-4 text-secondary text-lg font-bold">
+    
+          <div className="mt-4 text-[#F78014] text-lg font-bold">
             Average Rating: {averageRating?.toFixed(1)}
           </div>
-
+    
           <div className="text-center mt-4">
             {button === "delete" && (
               <Button
-                className="bg-red-500 text-lg"
+                className="bg-danger text-lg"
                 isDisabled={recipeToDelete === recipe?._id}
                 isLoading={recipeToDelete === recipe?._id}
                 onClick={() => handleDeleteRecipe(recipe?._id)}
@@ -106,7 +108,7 @@ const RecipeCard = ({
                 Delete Recipe
               </Button>
             )}
-
+    
             {button === "show details" && (
               <Link href={`/recipe/${recipe?._id}`}>
                 <Button className="bg-button text-lg">Show Details</Button>
@@ -116,6 +118,7 @@ const RecipeCard = ({
         </div>
       ) : null}
     </div>
+    
   );
 };
 

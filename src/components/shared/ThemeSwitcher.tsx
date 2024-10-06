@@ -15,7 +15,7 @@ export function ThemeSwitcher() {
   if (!mounted) return <Switch />;
 
   return (
-    <Switch
+    <Switch className=""
       isSelected={theme === "dark" ? true : false}
       onValueChange={(e) => setTheme(e ? "dark" : "light")}
     />
