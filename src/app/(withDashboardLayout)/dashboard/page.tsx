@@ -109,7 +109,7 @@ const Dashboard = () => {
         <div className="flex justify-center items-center py-4">
           <img
             alt="profile images"
-            className="rounded-full object-cover h-24 w-24"
+            className="rounded-full object-cover h-24 w-24 border-2 border-[#F78014]"
             src={data?.userData?.profilePicture}
           />
         </div>
@@ -150,7 +150,7 @@ const Dashboard = () => {
         </div>
 
         <div className="w-full flex flex-col sm:flex-row gap-5 justify-center items-center mt-5">
-          <Button className="bg-button font-bold text-lg hover:border-b-2 border-[#F78014]" onPress={onOpen}>
+          <Button className="bg-[#F78014] font-bold text-lg hover:border-b-2 border-[#F78014] text-white" onPress={onOpen}>
             Update Profile Info
           </Button>
 

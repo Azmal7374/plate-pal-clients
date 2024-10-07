@@ -186,16 +186,16 @@ const RecipeDetails = () => {
                 {recipe?.title}
               </h2>
               <div className="text-[#F78014] text-lg md:text-xl font-bold">
-                Average Rating: {averageRating?.toFixed(1)}
+                Rating: {averageRating?.toFixed(1)}
               </div>
             </div>
-            <div className="border-2 border-button mt-3 p-3 rounded-lg inline-flex justify-center items-center gap-2 md:gap-5 text-gray-900">
-              <Avatar src={postOwner?.profilePicture} />
+            <div className="border-2 border-[#F78014] border-button mt-3 p-3 rounded-lg inline-flex justify-center items-center gap-2 md:gap-5 text-gray-900">
+              <Avatar className="border-2 border-[#F78014] " src={postOwner?.profilePicture} />
 
               <div>
                 <h1 className="text-lg md:text-xl">
-                  Post Owner{" "}
-                  <span className="text-[#F78014]">{postOwner?.name}</span>
+                  Post Owner 
+                  <span className="text-[#F78014]"> {postOwner?.name}</span>
                 </h1>
 
                 <h1 className="text-md md:text-lg">{postOwner?.email}</h1>
@@ -221,7 +221,6 @@ const RecipeDetails = () => {
                 </Button>
               )}
             </div>
-            {/* Recipe Description */}
             <div
               dangerouslySetInnerHTML={{ __html: recipe?.content }}
               className="mt-4 text-default-700 text-md md:text-lg leading-relaxed"
@@ -305,7 +304,7 @@ const RecipeDetails = () => {
             </div>
           )}
 
-          <div className={`mt-10 pb-5 ${user?.role === "admin" && "hidden"}`}>
+          <div className={`mt-10 pb-5 ${user?.role === "admin" && "hidden"} p-4 md:p-2`}>
             {recipe?.comments?.length === 0 ? (
               <div className="text-xl md:text-2xl text-center font-bold text-danger">
                 There Are no comments for this post yet.
@@ -314,21 +313,21 @@ const RecipeDetails = () => {
               recipe?.comments?.map((comment: any, index: number) => (
                 <div
                   key={index}
-                  className="flex flex-col md:flex-row justify-between items-center text-gray-900 p-3 rounded-lg border-2 border-button w-full md:w-[70%] mx-auto mb-5"
+                  className="flex flex-col md:flex-row justify-between items-center text-default-900 p-3 rounded-lg border-2 border-[#F78014] border-button w-full md:w-[70%] mx-auto mb-5"
                 >
                   <div className="flex gap-3">
                     <Avatar
-                      className="flex-shrink-0"
+                      className="flex-shrink-0 border-2 border-[#F78014]"
                       src={
                         comment?.profilePicture ||
                         "https://i.pravatar.cc/150?u=a042581f4e29026024d"
                       }
                     />
                     <div className="flex flex-col">
-                      <h1 className="font-bold text- text-lg">
-                        {comment?.name || "Unknown User"}
+                      <h1 className="font-bold text- text-lg ">
+                        {comment?.name || "User Not Found"}
                       </h1>
-                      <h1 className="text-lg">
+                      <h1 className="text-lg ">
                         {comment?.comment || "No comment text provided."}
                       </h1>
                     </div>
@@ -368,8 +367,9 @@ const RecipeDetails = () => {
                     <Textarea
                       {...field}
                       required
-                      label="Comment"
-                      placeholder="Leave a comment for this recipe"
+                      label="Thoughts"
+                      placeholder="Share your thoughts on this recipe!"
+                      className="bg-[#F78014] "
                     />
                   )}
                 />

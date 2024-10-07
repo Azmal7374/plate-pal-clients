@@ -42,7 +42,7 @@ export default function NavbarDropdown() {
     },
     {
       label: "Manage Recipes",
-      action: () => handleNavigation("/dashboard/manage-recipies"),
+      action: () => handleNavigation("/dashboard/recipe-manage"),
       condition: user?.role === "admin",
     },
     {
@@ -52,7 +52,7 @@ export default function NavbarDropdown() {
     },
     {
       label: "Manage Admins",
-      action: () => handleNavigation("/dashboard/manage-admins"),
+      action: () => handleNavigation("/dashboard/admin-manage"),
       condition: user?.role === "admin",
     },
     {
@@ -77,7 +77,7 @@ export default function NavbarDropdown() {
     <Dropdown>
       <DropdownTrigger>
         <Avatar
-          className="cursor-pointer"
+          className="cursor-pointer border-2 border-[#F78014]"
           src={user?.profilePicture}
         />
       </DropdownTrigger>

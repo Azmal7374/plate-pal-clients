@@ -1,3 +1,4 @@
+/* eslint-disable padding-line-between-statements */
 /* eslint-disable prettier/prettier */
  
 "use server"
@@ -8,7 +9,6 @@ import { axiosInstance } from "@/src/lib/AxiosInstance"
 export const getUserInfo =async(id:string) =>{
   try {
     const res = await  axiosInstance.get(`/user/get-single-user/${id}`);
-
     return res.data.data;
 
   }catch(error){
@@ -19,8 +19,8 @@ export const getUserInfo =async(id:string) =>{
 // Update user Info functionalities
 export const updateUserInfo = async(id:string, payload:any) =>{
   try{
-    const res = await axiosInstance.put(`user/update-user-info/${id}`, payload)
-
+    const res = await axiosInstance.put(`user/update-user/${id}`, payload)
+   console.log(res)
     return res.data.data;
   }catch(error:any){
     throw new Error(error.response.data.message);
@@ -55,7 +55,6 @@ export const unfollowUser = async (id: string) => {
 export const getUserInformation = async (id: string) => {
     try {
       const res = await axiosInstance.get(`/user/get-user-info/${id}`);
-  
       return res.data.data;
     } catch (error: any) {
       throw new Error(error.response.data.message);

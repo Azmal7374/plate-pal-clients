@@ -63,13 +63,13 @@ const ManageAdmins = () => {
   const handleDeleteAdmin = (id: string) => {
     setUserToDelete(id);
     Swal.fire({
-      title: "Are you sure you want to delete this admin?",
+      title: "Are you certain you want to remove this user from the community?",
       text: "",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete admin!",
+      confirmButtonColor: "#F78014",
+      cancelButtonColor: "#F23F7F",
+      confirmButtonText: "Yes, permanently remove this admin!",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteAdmin(id, {
@@ -89,19 +89,17 @@ const ManageAdmins = () => {
   return (
     <div>
       <div className="container mx-auto p-8 pb-20">
-        <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center">
-          Manage <span className="text-secondary">Admins</span>
+        <h1 className="text-3xl font-bold mb-6 t[#F78014]ext-gray-900 text-center">
+          Manage <span className="text-[#CDC2A5]">Admins</span>
         </h1>
 
         <CreateAdmin />
 
-        {/* Responsive Table Wrapper */}
         <div className="hidden md:block">
           {" "}
-          {/* Show table on medium and larger screens */}
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+          <table className="min-w-full bg-slate-100  shadow-md rounded-lg overflow-hidden">
             <thead>
-              <tr className="bg-gray-200 text-gray-700">
+              <tr className="bg-slate-200 text-xl text-[#F78014]">
                 <th className="text-left p-4">Profile Picture</th>
                 <th className="text-left p-4">Admin Name</th>
                 <th className="text-left p-4">Action</th>
@@ -111,16 +109,16 @@ const ManageAdmins = () => {
               {adminData?.map((admin: any, index: number) => (
                 <tr
                   key={index}
-                  className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
+                  className="border-b border-slate-200 hover:bg-slate-100 transition-colors"
                 >
                   <td className="p-4">
                     <img
                       alt={admin?.name}
-                      className="w-16 h-16 object-cover rounded"
+                       className="border-2 border-[#F78014] p-1 w-16 h-16 object-cover rounded-full transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:rotate-3"
                       src={admin?.profilePicture}
                     />
                   </td>
-                  <td className="p-4 text-lg font-bold text-gray-900">
+                  <td className="p-4 text-lg font-bold text-default-900">
                     {admin?.name}
                   </td>
 
@@ -129,14 +127,14 @@ const ManageAdmins = () => {
                   ) : (
                     <td className="p-4">
                       <Button
-                        className="text-lg font-bold bg-green-500 mr-5"
+                        className="text-lg  text-white font-bold bg-[#F78014] mr-5"
                         onClick={() => handleOpenUpdateModal(admin)}
                       >
                         Update
                       </Button>
 
                       <Button
-                        className="text-lg font-bold bg-red-500"
+                        className="text-lg font-bold bg-danger text-white"
                         isDisabled={userToDelete === admin?._id}
                         isLoading={userToDelete === admin?._id}
                         onClick={() => handleDeleteAdmin(admin?._id)}
@@ -158,16 +156,16 @@ const ManageAdmins = () => {
           {adminData?.map((admin: any, index: number) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-lg p-4 mb-4 transition-shadow hover:shadow-lg"
+              className="bg-slate-200 shadow-md rounded-lg p-4 mb-4 transition-shadow hover:shadow-lg"
             >
               <div className="flex items-center mb-4">
                 <img
                   alt={admin?.name}
-                  className="w-16 h-16 object-cover rounded"
+                  className="border-2 border-[#F78014] p-1 w-16 h-16 object-cover rounded-full transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:rotate-3"
                   src={admin?.profilePicture}
                 />
                 <div className="ml-4">
-                  <h2 className="text-lg font-bold text-gray-900">
+                  <h2 className="text-lg font-bold text-default-900">
                     {admin?.name}
                   </h2>
                 </div>
@@ -176,14 +174,14 @@ const ManageAdmins = () => {
                 {user?._id === admin?._id ? null : (
                   <>
                     <Button
-                      className="bg-green-500 font-bold text-lg"
+                      className="bg-[#F78014] text-white font-bold text-lg"
                       onClick={() => handleOpenUpdateModal(admin)}
                     >
                       Update
                     </Button>
 
                     <Button
-                      className="bg-red-500 font-bold text-lg"
+                      className="bg-danger text-white font-bold text-lg"
                       isDisabled={userToDelete === admin?._id}
                       isLoading={userToDelete === admin?._id}
                       onClick={() => handleDeleteAdmin(admin?._id)}
@@ -199,15 +197,14 @@ const ManageAdmins = () => {
 
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
           <ModalContent>
-            <div className="p-4 text-lg">Update Profile Info</div>
+            <div className="p-4 text-lg font-bold text-[#F78014]">Update Profile Info</div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="px-4 pb-4 flex flex-col gap-3">
-                {/* Register inputs with react-hook-form */}
                 <Input label="Name" type="text" {...register("name")} />
 
                 <Input
-                  label="Profile Picture URL"
+                  label="Profile Picture"
                   type="text"
                   {...register("profilePicture")}
                 />
@@ -215,10 +212,9 @@ const ManageAdmins = () => {
                 <Input label="Bio" type="text" {...register("bio")} />
               </div>
 
-              {/* Submit button */}
-              <div className="flex justify-center pb-4">
+              <div className="flex justify-center pb-4 p-4">
                 <Button
-                  className="bg-button"
+                  className="bg-[#F78014] text-xl font-bold text-white w-full"
                   isDisabled={isPending}
                   isLoading={isPending}
                   type="submit"

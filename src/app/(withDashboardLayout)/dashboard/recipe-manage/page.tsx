@@ -19,35 +19,35 @@ const ManageRecipies = () => {
   const [recipeToDelete, setRecipeToDelete] = useState<string | null>(null);
 
   const handleAction = async (id: string, status: boolean) => {
-    setLoadingRecipeId(id); // Set loading for the specific recipe
+    setLoadingRecipeId(id); 
 
     if (status === true) {
       Swal.fire({
-        title: "Are you sure you want to unpublish this recipe?",
+        title: "Are you sure you want to take this recipe off the spotlight?",
         text: "",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, unpublish it!",
+        confirmButtonColor: "#F78014",
+        cancelButtonColor: "#F23F7F",
+        confirmButtonText: "Yes, hide it from the spotlight!",
       }).then((result) => {
         if (result.isConfirmed) {
           unpublishRecipe(id, {
-            onSuccess: () => setLoadingRecipeId(null), // Reset loading state after success
-            onError: () => setLoadingRecipeId(null), // Reset loading state on error as well
+            onSuccess: () => setLoadingRecipeId(null),
+            onError: () => setLoadingRecipeId(null), 
           });
         } else {
-          setLoadingRecipeId(null); // Reset loading state if action is canceled
+          setLoadingRecipeId(null); 
         }
       });
     } else if (status === false) {
       Swal.fire({
-        title: "Are you sure you want to publish this recipe?",
+        title: "Ready to share your masterpiece with the world?",
         text: "",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#F78014",
+        cancelButtonColor: "#F23F7F",
         confirmButtonText: "Yes, publish it!",
       }).then((result) => {
         if (result.isConfirmed) {
@@ -65,13 +65,13 @@ const ManageRecipies = () => {
   const handleDeleteRecipe = async (id: string) => {
     setRecipeToDelete(id);
     Swal.fire({
-      title: "Are you sure you want to delete this recipe?",
+      title: "Wait! Are you sure you want to remove this recipe from your collection?",
       text: "",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#F78014",
+      cancelButtonColor: "#F23F7F",
+      confirmButtonText: "Yes, go ahead! Let’s clear it out!",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteRecipe(id, {
@@ -89,18 +89,18 @@ const ManageRecipies = () => {
   }
 
   return (
+    
     <div className="container mx-auto p-8 pb-20">
       <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center">
-        Manage <span className="text-secondary">Recipes</span>
+        Manage <span className="text-[#CDC2A5]">Recipes</span>
       </h1>
 
-      {/* Responsive Table Wrapper */}
       <div className="hidden md:block">
-        {" "}
-        {/* Show table on medium and larger screens */}
-        <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+      
+      
+        <table className="min-w-full bg-slate-100 shadow-md rounded-lg overflow-hidden text-xl">
           <thead>
-            <tr className="bg-gray-200 text-gray-700">
+            <tr className="bg-slate-200 text-[#F78014]">
               <th className="text-left p-4">Image</th>
               <th className="text-left p-4">Title</th>
               <th className="text-left p-4">Status</th>
@@ -111,14 +111,14 @@ const ManageRecipies = () => {
             {recepiesData?.map((recipe: any, index: number) => (
               <tr
                 key={index}
-                className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
+                className="border-b border-slate-200 hover:bg-slate-100 transition-colors"
               >
                 <td className="p-4">
-                  <img
-                    alt={recipe?.title}
-                    className="w-16 h-16 object-cover rounded"
-                    src={recipe?.image}
-                  />
+                <img
+  alt={recipe?.title}
+  className="w-16 h-16 object-cover rounded transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:rotate-3"
+  src={recipe?.image}
+/>
                 </td>
                 <td className="p-4 text-lg font-bold text-gray-900">
                   {recipe?.title}
@@ -127,8 +127,8 @@ const ManageRecipies = () => {
                   <span
                     className={`py-1 px-3 rounded-full text-sm ${
                       recipe?.isPublished === true
-                        ? "bg-green-100 text-green-700"
-                        : "bg-yellow-100 text-yellow-700"
+                       ? "bg-slate-200 text-[#F78014]"
+                      : "bg-danger text-white"
                     }`}
                   >
                     {recipe?.isPublished ? "Published" : "Unpublished"}
@@ -136,7 +136,7 @@ const ManageRecipies = () => {
                 </td>
                 <td className="p-4">
                   <Button
-                    className="bg-primary ml-4 font-bold text-lg"
+                    className="bg-[#F78014] text-white ml-4 font-bold text-lg"
                     isDisabled={loadingRecipeId === recipe?._id}
                     isLoading={loadingRecipeId === recipe?._id}
                     onClick={() =>
@@ -147,7 +147,7 @@ const ManageRecipies = () => {
                   </Button>
 
                   <Button
-                    className="bg-red-500 ml-4 font-bold text-lg"
+                    className="bg-danger text-white ml-4 font-bold text-lg"
                     isDisabled={recipeToDelete === recipe?._id}
                     isLoading={recipeToDelete === recipe?._id}
                     onClick={() => handleDeleteRecipe(recipe?._id)}
@@ -168,23 +168,24 @@ const ManageRecipies = () => {
         {recepiesData?.map((recipe: any, index: number) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-lg p-4 mb-4 transition-shadow hover:shadow-lg"
+            className="bg-slate-200 shadow-md rounded-lg p-4 mb-4 transition-shadow hover:shadow-lg"
           >
             <div className="flex items-center mb-4">
-              <img
-                alt={recipe?.title}
-                className="w-16 h-16 object-cover rounded"
-                src={recipe?.image}
-              />
+            <img
+  alt={recipe?.title}
+  className="w-16 h-16 object-cover rounded transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:rotate-3"
+  src={recipe?.image}
+/>
+
               <div className="ml-4">
-                <h2 className="text-lg font-bold text-gray-900">
+                <h2 className="text-lg font-bold text-default-900">
                   {recipe?.title}
                 </h2>
                 <span
                   className={`py-1 px-2 rounded-full text-sm ${
                     recipe?.isPublished
-                      ? "bg-green-100 text-green-700"
-                      : "bg-yellow-100 text-yellow-700"
+                      ? "bg-white text-[#F78014]"
+                      : "bg-danger text-white"
                   }`}
                 >
                   {recipe?.isPublished ? "Published" : "Unpublished"}
@@ -193,7 +194,7 @@ const ManageRecipies = () => {
             </div>
             <div className="flex justify-between">
               <Button
-                className="bg-primary font-bold text-lg"
+                className="bg-[#F78014] text-white font-bold text-lg"
                 isDisabled={loadingRecipeId === recipe?._id}
                 isLoading={loadingRecipeId === recipe?._id}
                 onClick={() => handleAction(recipe?._id, recipe?.isPublished)}
@@ -201,7 +202,7 @@ const ManageRecipies = () => {
                 {recipe?.isPublished ? "Unpublish" : "Publish"}
               </Button>
               <Button
-                className="bg-red-500 font-bold text-lg"
+                className="bg-danger text-white font-bold text-lg"
                 isDisabled={recipeToDelete === recipe?._id}
                 isLoading={recipeToDelete === recipe?._id}
                 onClick={() => handleDeleteRecipe(recipe?._id)}

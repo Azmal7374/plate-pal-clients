@@ -77,9 +77,25 @@ export const getAccessToken = async () => {
 export const changePassword = async (payload: any) => {
   try {
     const { data } = await axiosInstance.post(`/auth/change-password`, payload);
-
+    console.log(data)
     return data;
   } catch (error: any) {
     throw new Error("Failed To Change Password");
+  }
+};
+
+
+export const resetPassword = async (payload: any) => {
+  try {
+    const { data } = await axiosInstance.post(`/auth/forgot-password`, payload);
+
+    return data;
+  } catch (error: any) {
+    const data = {
+      success: false,
+      message: error?.response?.data?.message,
+    };
+
+    return data;
   }
 };

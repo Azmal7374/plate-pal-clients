@@ -130,7 +130,7 @@ const CreateRecipe = () => {
         </div>
 
         {/* Rich Text Editor */}
-        <div className="flex flex-col">
+        <div className="flex flex-col border-2 border-[#F78014]">
           <JoditEditor
             ref={editor}
             config={config}

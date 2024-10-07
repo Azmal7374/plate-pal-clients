@@ -16,8 +16,6 @@ const ChangePassword = () => {
   const router = useRouter();
 
   const { mutate: changePassword, isPending, data } = useChangePassword();
-
-  // Initialize the useForm hook
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
@@ -31,7 +29,6 @@ const ChangePassword = () => {
     }
   }, [data]);
 
-  // Function to handle form submission
   const onSubmit = async (data: any) => {
     const payload = {
       email: user?.email,
@@ -66,7 +63,6 @@ const ChangePassword = () => {
             />
           </div>
 
-          {/* Current Password Field */}
           <div className="mb-4">
             <label
               className="block text-default-700 font-bold mb-2 text-lg"
@@ -83,7 +79,6 @@ const ChangePassword = () => {
             />
           </div>
 
-          {/* New Password Field */}
           <div className="mb-6">
             <label
               className="block text-default-700 font-bold mb-2 text-lg"

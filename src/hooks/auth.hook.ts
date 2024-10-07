@@ -3,7 +3,7 @@
 
 import { useMutation } from "@tanstack/react-query"
 import { FieldValues } from "react-hook-form";
-import { changePassword, loginUser, registerUser } from "../services/AuthService";
+import { changePassword, loginUser, registerUser, resetPassword } from "../services/AuthService";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -51,5 +51,14 @@ export const useChangePassword = () => {
       onError: (error) => {
         toast.error(error.message);
       },
+    });
+  };
+
+
+
+  export const useResetPassword = () => {
+    return useMutation<any, Error, FieldValues>({
+      mutationKey: ["RESET_PASSWORD"],
+      mutationFn: async (userData) => await resetPassword(userData),
     });
   };
