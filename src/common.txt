@@ -1,3 +1,12 @@
 bg-[#F78014]
 
 text-[#CDC2A5]
+
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "CookNest || About us",
+  description:
+    "At CookNest, we believe that cooking is more than just preparing food, it is an experience, a way to connect, and an expression of creativity.",
+};

@@ -5,12 +5,11 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable prettier/prettier */
 "use client"
-
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 const ContactUs = () => {
-
     const form = useRef<HTMLFormElement>(null);
 
     const sendEmail = (e: React.FormEvent) => {
@@ -45,42 +44,79 @@ const ContactUs = () => {
 
   return (
     <div className="">
-       <section className=" py-12">
-      <div className="container mx-auto px-6">
-        <h2 className="text-gray-800 text-2xl md:text-4xl mb-1 font-bold title-font text-center">Contact Information</h2>
-        <p className="text-center text-lg mt-4 mb-8">
-          Reach out to us through the following channels.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="bg-[#CEDF9F] p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold mb-4">Phone</h3>
-            <p className="text-gray-600">+1 234 567 890</p>
-          </div>
-          <div className="bg-[#CEDF9F] p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold mb-4">Email</h3>
-            <p className="text-gray-600">contact@yourdomain.com</p>
-          </div>
-          <div className="bg-[#F78014] p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold mb-4">Address</h3>
-            <p className="text-gray-600">1234 Street Name, City, State, Zip Code</p>
-          </div>
+        <section className="py-12">
+        <div className="container mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-gray-800 text-2xl md:text-4xl mb-1 font-bold title-font text-center"
+          >
+            Contact Information
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-center text-lg mt-4 mb-8"
+          >
+            Reach out to us through the following channels.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+          >
+            <div className="bg-slate-100 p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">Phone</h3>
+              <p className="text-gray-600">+1 234 567 890</p>
+            </div>
+            <div className="bg-slate-100 p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">Email</h3>
+              <p className="text-gray-600">contact@yourdomain.com</p>
+            </div>
+            <div className="bg-slate-100 p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">Address</h3>
+              <p className="text-gray-600">
+                1234 Street Name, City, State, Zip Code
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section className="py-12">
-      <div className="container mx-auto px-6">
-        <h2 className="text-gray-800 text-2xl md:text-4xl mb-1 font-bold title-font text-center">Send Us a Message</h2>
-        <p className="text-center text-lg md:text-xl mt-4 mb-8 text-gray-700">
-          Have any questions? We’d love to hear from you.
-        </p>
-        <div className="max-w-xl mx-auto">
-          <form ref={form} onSubmit={sendEmail} className="bg-gray-50 p-8 rounded-lg shadow-lg">
-          <div className="relative mb-4 form-group">
-                <label
-                  htmlFor="name"
-                  className="leading-7 text-sm text-gray-600"
-                >
+      <section className="py-12">
+        <div className="container mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-gray-800 text-2xl md:text-4xl mb-1 font-bold title-font text-center"
+          >
+            Send Us a Message
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-center text-lg md:text-xl mt-4 mb-8 text-gray-700"
+          >
+            Have any questions? We’d love to hear from you.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="max-w-xl mx-auto"
+          >
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="bg-gray-50 p-8 rounded-lg shadow-lg"
+            >
+              <div className="relative mb-4 form-group">
+                <label htmlFor="name" className="leading-7 text-sm text-gray-600">
                   Name
                 </label>
                 <input
@@ -94,10 +130,7 @@ const ContactUs = () => {
               </div>
 
               <div className="relative mb-4 form-group">
-                <label
-                  htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
-                >
+                <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                   Email
                 </label>
                 <input
@@ -106,16 +139,12 @@ const ContactUs = () => {
                   placeholder="Enter Your Email"
                   name="from_email"
                   required
-                  className="w-full bg-white rounded border border-gray-300 focus:border-button focus:ring-2 focus:ring-button text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  className="w-full bg-slate-200 rounded border border-gray-300 focus:border-button focus:ring-2 focus:ring-button text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
 
-            
               <div className="relative mb-4 form-group">
-                <label
-                  htmlFor="message"
-                  className="leading-7 text-sm text-gray-600"
-                >
+                <label htmlFor="message" className="leading-7 text-sm text-gray-600">
                   Message
                 </label>
                 <textarea
@@ -125,25 +154,45 @@ const ContactUs = () => {
                 ></textarea>
               </div>
               <div className="form-control mt-6">
-                <input
+                <motion.input
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   type="submit"
                   value="Send Message"
-                  className="bg-[#E8B86D] text-white p-2 rounded-full w-40"
-                ></input>
+                  className="bg-[#F78014] text-white p-2 rounded-full w-40 cursor-pointer"
+                />
               </div>
-          </form>
+            </form>
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section className="py-12 ">
+
+      <section className="py-12">
       <div className="container mx-auto px-6">
-        <h2 className="text-gray-800 text-2xl md:text-4xl mb-1 font-bold title-font text-center">Location & Hours</h2>
-        <p className="text-center text-lg mt-4 mb-8">
+        <motion.h2
+          className="text-gray-800 text-2xl md:text-4xl mb-1 font-bold title-font text-center"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Location & Hours
+        </motion.h2>
+        <motion.p
+          className="text-center text-lg mt-4 mb-8"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           Find us here and check our operating hours.
-        </p>
+        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-lg"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
             <h3 className="text-xl font-semibold mb-4">Our Location</h3>
             <div className="w-full h-64">
               <iframe
@@ -152,8 +201,14 @@ const ContactUs = () => {
                 loading="lazy"
               ></iframe>
             </div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          </motion.div>
+
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-lg"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
             <h3 className="text-xl font-semibold mb-4">Operating Hours</h3>
             <ul className="text-gray-600">
               <li className="mb-4">
@@ -166,7 +221,7 @@ const ContactUs = () => {
                 <strong>Sunday:</strong> Closed
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
