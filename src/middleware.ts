@@ -8,7 +8,6 @@ import { getCurrentUser } from "./services/AuthService";
 export async function middleware(request: NextRequest) {
   const user = await getCurrentUser();
 
-// Protected Paths Definition:
   const protectedPaths = [
     "/dashboard",
     "/recipe",
@@ -17,21 +16,14 @@ export async function middleware(request: NextRequest) {
   ];
   const redirectPaths = ["/login", "/register"];
 
-// Admin and User Path Definitions:
   const adminProtectedPaths = [
     "/dashboard/manage-admins",
     "/dashboard/manage-users",
     "/dashboard/manage-recipies",
   ];
 
-  const userProtectedPaths = [
-    "/dashboard/create-recipe",
-    "/recipe",
-    "/recipe/:page*",
-  ];
+  const userProtectedPaths = ["/dashboard/create-recipe"];
 
-
-//  Admin and User Role Checking:
   const isAdminPath = adminProtectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path)
   );
@@ -56,7 +48,6 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-//   General Authentication Check for Protected Paths:
   const isProtectedPath = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path)
   );
@@ -80,7 +71,6 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Middleware Configuration (Matcher):
 export const config = {
   matcher: [
     "/dashboard",

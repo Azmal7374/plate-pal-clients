@@ -51,13 +51,13 @@ export const useGetAllRecipe = () => {
     });
   };
 
-export const useGetSingleRecipe = (id: string) => {
+  export const useGetSingleRecipe = (id: string) => {
     return useQuery({
       queryKey: ["GET_SINGLE_RECIPE"],
       queryFn: async () => await getSingleRecipe(id),
     });
   };
-
+  
 export const useUpvoteRecipe = () => {
     const queryClient = useQueryClient();
   

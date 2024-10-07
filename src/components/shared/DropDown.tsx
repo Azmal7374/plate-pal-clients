@@ -31,6 +31,11 @@ export default function NavbarDropdown() {
 
   const dropdownItems = [
     {
+      label: "Home",
+      action: () => handleNavigation("/"),
+      condition: true,
+    },
+    {
       label: "Profile",
       action: () => handleNavigation("/dashboard"),
       condition: true,

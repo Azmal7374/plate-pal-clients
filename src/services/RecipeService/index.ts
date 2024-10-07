@@ -39,7 +39,7 @@ export const deleteRecipe = async (id: string) => {
 export const getAllRecipe = async () => {
     try {
       const { data } = await axiosInstance.get(`/recipe/get-all-recipe`);
-  
+    //  console.log("Get all Recipe", data);
       return data;
     } catch (error: any) {
       throw new Error(error.response.data.message);
@@ -48,15 +48,14 @@ export const getAllRecipe = async () => {
 
 //Get Single Recipe functionalities
 export const getSingleRecipe = async (id: string) => {
-    try {
-      const { data } = await axiosInstance.get(`/recipe/get-single-recipe/${id}`);
-  
-      return data;
-    } catch (error: any) {
-      throw new Error(error.response.data.message);
-    }
-  };
-  
+  try {
+    const { data } = await axiosInstance.get(`/recipe/get-single-recipe/${id}`);
+    
+    return data;
+  } catch (error: any) {
+    throw new Error(error.response.data.message);
+  }
+};
 //post upvote Recipe functionalities
 export const upvoteRecipe = async (id: string) => {
     try {

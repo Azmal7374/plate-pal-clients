@@ -4,7 +4,7 @@ import envConfig from "@/src/config/envConfig";
 import { getAccessToken } from "@/src/services/AuthService";
 
 export const axiosInstance = axios.create({
-  baseURL: envConfig.baseApi,
+  baseURL: "http://localhost:5000/api/v1",
 });
 
 // Request Interceptor:

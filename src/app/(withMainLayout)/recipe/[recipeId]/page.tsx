@@ -27,11 +27,10 @@ import Loading from "@/src/components/shared/Loading/Loading";
 
 const RecipeDetails = () => {
   const params = useParams();
-  const { id } = params;
+  const { recipeId } = params;
 
   const { user } = useUser();
-
-  const { data, isLoading } = useGetSingleRecipe(id as string);
+  const { data, isLoading } = useGetSingleRecipe(recipeId as string);
   const {
     mutate: upvoteRecipe,
     isPending: isUpvotePending,
@@ -162,36 +161,31 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div className="bg-[#F5EDED]">
+    <div className="">
       <div className="w-[90%] mx-auto py-10 md:w-[80%]">
         {" "}
         {/* Responsive width */}
         <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
           {/* Recipe Image */}
-          <div className="relative">
-            <img
-              alt={recipe?.title}
-              className="w-full h-[300px] md:h-[500px] object-cover" // Responsive height
-              src={recipe?.image}
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-transparent to-transparent p-4">
-              <h1 className="text-white text-2xl md:text-4xl font-bold">
-                {recipe?.title}
-              </h1>{" "}
-              {/* Responsive text size */}
-            </div>
-          </div>
+          <div className="relative group transition-transform duration-300 hover:scale-105">
+  <img
+    alt={recipe?.title}
+    className="w-full h-[300px] md:h-[500px] object-cover transition-transform duration-300 hover:scale-110"
+    src={recipe?.image}
+  />
+  <div className="absolute bottom-0 left-5 right-0 bg-gradient-to-t from-black via-transparent to-transparent p-4">
+    <h1 className="text-white text-3xl md:text-5xl font-bold opacity-0 translate-y-5 transition-opacity duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+      {recipe?.title}
+    </h1>
+  </div>
+</div>
 
-          {/* Recipe Content */}
           <div className="p-4 md:p-8">
-            {" "}
-            {/* Responsive padding */}
-            {/* Recipe Title and Details */}
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#F78014]">
                 {recipe?.title}
               </h2>
-              <div className="text-secondary text-lg md:text-xl font-bold">
+              <div className="text-[#F78014] text-lg md:text-xl font-bold">
                 Average Rating: {averageRating?.toFixed(1)}
               </div>
             </div>
@@ -200,8 +194,8 @@ const RecipeDetails = () => {
 
               <div>
                 <h1 className="text-lg md:text-xl">
-                  Posted by{" "}
-                  <span className="text-secondary">{postOwner?.name}</span>
+                  Post Owner{" "}
+                  <span className="text-[#F78014]">{postOwner?.name}</span>
                 </h1>
 
                 <h1 className="text-md md:text-lg">{postOwner?.email}</h1>
@@ -211,7 +205,7 @@ const RecipeDetails = () => {
                 ""
               ) : (
                 <Button
-                  className={`text-sm md:text-lg bg-button font-bold ${user?.role === "admin" && "hidden"}`}
+                  className={`text-sm md:text-lg bg-button font-bold text-[#F78014] ${user?.role === "admin" && "hidden"}`}
                   isDisabled={isFollowUserPending || isUnfollowUserPending}
                   isLoading={isFollowUserPending || isUnfollowUserPending}
                   startContent={<FaCirclePlus />}
@@ -230,7 +224,7 @@ const RecipeDetails = () => {
             {/* Recipe Description */}
             <div
               dangerouslySetInnerHTML={{ __html: recipe?.content }}
-              className="mt-4 text-gray-700 text-md md:text-lg leading-relaxed"
+              className="mt-4 text-default-700 text-md md:text-lg leading-relaxed"
             />
           </div>
 
@@ -239,7 +233,7 @@ const RecipeDetails = () => {
           >
             <Button
               className="text-lg md:text-xl"
-              color="success"
+              color="secondary"
               isDisabled={isUpvotePending || isDownvotePending}
               isLoading={isUpvotePending}
               startContent={<BiUpvote />}
@@ -251,7 +245,7 @@ const RecipeDetails = () => {
 
             <Button
               className="text-lg md:text-xl"
-              color="danger"
+              color="warning"
               isDisabled={isUpvotePending || isDownvotePending}
               isLoading={isDownvotePending}
               startContent={<BiDownvote />}
@@ -266,12 +260,12 @@ const RecipeDetails = () => {
             <div
               className={`pb-5 flex justify-center items-center gap-3 md:gap-5 ${user?.role === "admin" && "hidden"}`}
             >
-              <Button className="bg-button text-lg font-bold" onPress={onOpen}>
+              <Button className="bg-[#F78014] text-lg font-bold text-white" onPress={onOpen}>
                 Rate this Recipe
               </Button>
 
               <Modal
-                className="p-3 bg-primary"
+                className="p-3 bg-slate-300"
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
               >
@@ -280,16 +274,19 @@ const RecipeDetails = () => {
                     className="flex flex-col gap-5"
                     onSubmit={handleSubmit(onSubmit)}
                   >
-                    {/* Select for rating */}
                     <Select
-                      className="max-w-xs"
+                      className="max-w-xs "
                       label="How much would you rate this recipe?"
                       {...register("rating", { required: true })}
                     >
                       <SelectItem key={"1"}>1</SelectItem>
+                      <SelectItem key={"1"}>1.5</SelectItem>
                       <SelectItem key={"2"}>2</SelectItem>
+                      <SelectItem key={"2"}>2.5</SelectItem>
                       <SelectItem key={"3"}>3</SelectItem>
+                      <SelectItem key={"3"}>3.5</SelectItem>
                       <SelectItem key={"4"}>4</SelectItem>
+                      <SelectItem key={"4"}>4.5</SelectItem>
                       <SelectItem key={"5"}>5</SelectItem>
                     </Select>
 
@@ -298,6 +295,7 @@ const RecipeDetails = () => {
                       isDisabled={isRateRecipePending}
                       isLoading={isRateRecipePending}
                       type="submit"
+                      className="bg-[#F78014] text-white text-xl"
                     >
                       Submit
                     </Button>
@@ -309,7 +307,7 @@ const RecipeDetails = () => {
 
           <div className={`mt-10 pb-5 ${user?.role === "admin" && "hidden"}`}>
             {recipe?.comments?.length === 0 ? (
-              <div className="text-2xl text-center font-bold text-red-600">
+              <div className="text-xl md:text-2xl text-center font-bold text-danger">
                 There Are no comments for this post yet.
               </div>
             ) : (
@@ -327,7 +325,7 @@ const RecipeDetails = () => {
                       }
                     />
                     <div className="flex flex-col">
-                      <h1 className="font-bold text-lg">
+                      <h1 className="font-bold text- text-lg">
                         {comment?.name || "Unknown User"}
                       </h1>
                       <h1 className="text-lg">
@@ -341,7 +339,7 @@ const RecipeDetails = () => {
                       <Button
                         isIconOnly
                         aria-label="Edit"
-                        className="bg-button"
+                        className="bg-[#F78014] text-white text-xl"
                         onPress={() =>
                           handleOpenCommentEditModal(
                             comment?._id,
@@ -377,7 +375,7 @@ const RecipeDetails = () => {
                 />
 
                 <Button
-                  className="bg-button text-lg font-bold"
+                  className="bg-[#F78014] text-white text-xl"
                   isDisabled={isCommentRecipePending}
                   isLoading={isCommentRecipePending}
                   type="submit"
@@ -392,7 +390,7 @@ const RecipeDetails = () => {
               >
                 <ModalContent>
                   <form
-                    className="p-5 flex flex-col gap-5 bg-primary"
+                    className="p-5 flex flex-col gap-5 bg-slate-300"
                     onSubmit={handleUpdateComment}
                   >
                     <Textarea
@@ -403,7 +401,7 @@ const RecipeDetails = () => {
                     />
 
                     <Button
-                      className="bg-button text-lg font-bold"
+                       className="bg-[#F78014] text-white text-xl"
                       isDisabled={isEditCommentPending}
                       isLoading={isEditCommentPending}
                       type="submit"
