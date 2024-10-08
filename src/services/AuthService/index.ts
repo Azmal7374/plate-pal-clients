@@ -1,3 +1,4 @@
+/* eslint-disable padding-line-between-statements */
 /* eslint-disable prettier/prettier */
 "use server"
 
@@ -77,7 +78,7 @@ export const getAccessToken = async () => {
 export const changePassword = async (payload: any) => {
   try {
     const { data } = await axiosInstance.post(`/auth/change-password`, payload);
-    console.log(data)
+    // console.log(data)
     return data;
   } catch (error: any) {
     throw new Error("Failed To Change Password");

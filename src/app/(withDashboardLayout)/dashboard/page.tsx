@@ -1,3 +1,4 @@
+/* eslint-disable padding-line-between-statements */
 
 /* eslint-disable prettier/prettier */
 "use client";
@@ -98,13 +99,12 @@ const Dashboard = () => {
 
     becomePremiumMember(payload);
   };
-
   if (isSingleUserDataLoading) {
     return <Loading />;
   }
 
   return (
-    <div className="py-10">
+    <div className="py-10 bg-slate-100">
       <div className="w-[90%] sm:w-[70%] lg:w-[50%] mx-auto pb-5 rounded-lg bg-[#F2E5BF]">
         <div className="flex justify-center items-center py-4">
           <img

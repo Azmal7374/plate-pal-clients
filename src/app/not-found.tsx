@@ -1,8 +1,9 @@
+/* eslint-disable prettier/prettier */
 "use client";
 
 import Link from "next/link";
 
-const ErrorPage = () => {
+const NotFound = () => {
   return (
     <div>
       <div className="bg-white min-h-screen lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
@@ -11,30 +12,29 @@ const ErrorPage = () => {
             <div className="absolute">
               <div className="">
                 <h1 className="my-2 text-gray-800 font-bold text-2xl">
-                  Looks like you have found the doorway to the great nothing
+                Looks like you've stumbled upon the path to the unknown. Time to turn back or discover something new!
                 </h1>
                 <p className="my-2 text-gray-800">
-                  Sorry about that! Please visit our hompage to get where you
-                  need to go.
+                Oops, looks like you've taken a detour! Head back to our homepage to find your way.
                 </p>
                 <Link href="/">
-                  <button className="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">
-                    Take me there!
+                  <button className="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-[#F78014] text-white  ">
+                   Let me guide you back—click below!
                   </button>
                 </Link>
               </div>
             </div>
             <div>
-              <img alt="" src="https://i.ibb.co/G9DC8S0/404-2.png" />
+              <img alt="" src="https://img.freepik.com/premium-vector/oops-404-found-error-concept-vector-illustration_684242-20.jpg?ga=GA1.1.1302518135.1720608685&semt=ais_hybrid" />
             </div>
           </div>
         </div>
         <div>
-          <img alt="" src="https://i.ibb.co/ck1SGFJ/Group.png" />
+          <img alt="" src="https://img.freepik.com/premium-vector/vector-illustration-about-desert-landscape-concept-with-404-error-page_675567-6056.jpg?ga=GA1.1.1302518135.1720608685&semt=ais_hybrid" />
         </div>
       </div>
     </div>
   );
 };
 
-export default ErrorPage;
+export default NotFound;

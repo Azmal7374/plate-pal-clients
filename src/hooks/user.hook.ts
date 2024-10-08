@@ -85,31 +85,31 @@ export const useGetUserInfo = (id: string) => {
   };
 
 
-export const useBecomePremiumMember = () =>{
+export const useBecomePremiumMember = () => {
     return useMutation({
-        mutationKey:["BECOME_PREMIUM_MEMBER"],
-        mutationFn: async (payload:any) => await becomePremiumMember(payload),
-
-        onSuccess:(result) =>{
-            if(result.error){
-                const wrongData = result.error
-                if(wrongData && "data" in wrongData){
-                    toast.error((wrongData.data as any).message);
-                }else{
-                    toast.error("Unexpected Error")
-                }
-            }else{
-                if(result.result === "true"){
-                window.location.href = result.payment_url
-                }
-            }
-        },
-        onError:(error) => {
-            toast.error(error.message)
+      mutationKey: ["BECOME_PREMIUM_MEMBER"],
+      mutationFn: async (payload: any) => await becomePremiumMember(payload),
+  
+      onSuccess: (res) => {
+        if (res.error) {
+          const errorData = res.error;
+  
+          if (errorData && "data" in errorData) {
+            toast.error((errorData.data as any).message);
+          } else {
+            toast.error("An unexpected error occurred");
+          }
+        } else {
+          if (res.result === "true") {
+            window.location.href = res.payment_url;
+          }
         }
-    })
-}
-
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
+    });
+  };
 export const useGetAllUser = () => {
     return useQuery({
       queryKey: ["GET_ALL_USER"],

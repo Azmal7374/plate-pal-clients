@@ -44,13 +44,13 @@ const RecipeCard = ({
     setRecipeToDelete(id);
 
     Swal.fire({
-      title: "Are you sure you want to delete this recipe?",
+      title: "Wait! Are you sure you want to remove this recipe from your collection?",
       text: "",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#F78014",
+      cancelButtonColor: "#F23F7F",
+      confirmButtonText: "Yes, go ahead! Let’s clear it out!",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteRecipe(id, {

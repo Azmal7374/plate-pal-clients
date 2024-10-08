@@ -28,7 +28,7 @@ export default function NavBar() {
   ];
 
   return (
-    <Navbar className="bg-slate-200" maxWidth="2xl" onMenuOpenChange={setIsMenuOpen}>
+    <Navbar className="bg-slate-300" maxWidth="2xl" onMenuOpenChange={setIsMenuOpen}>
       <motion.div
         initial={{ rotate: 0 }}
         animate={{ rotate: isMenuOpen ? 90 : 0 }} // Animate the toggle icon

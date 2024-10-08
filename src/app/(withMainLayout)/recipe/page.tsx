@@ -129,7 +129,7 @@ const RecipePage = () => {
 </div>
 
 
-<div className="p-4 md:p-0 bg-slate-200 mt-10">
+<div className="p-4 md:p-0 bg-slate-200 ">
   <div className="py-20">
     <motion.div
       initial={{ opacity: 0, y: 20 }}

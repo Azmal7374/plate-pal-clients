@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 const Footer = () => {
   return (
     <div className="">
-      <footer className="bg-gray-100 font-sans bg-[#] dark:bg-gray-900">
+      <footer className="bg-gray-200 font-sans bg-[#] dark:bg-gray-900">
         <div className="container px-6 pt-12 pb-5 mx-auto">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
             <div className="sm:col-span-2">
@@ -17,7 +18,7 @@ const Footer = () => {
                   placeholder="Email"
                 />
 
-                <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-gray-800 transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-[#E8B86D] rounded-lg hover:bg-button-dark focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-gray-800 transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-[#F78014] rounded-lg hover:bg-button-dark focus:ring focus:ring-gray-300 focus:ring-opacity-80">
                   Subscribe
                 </button>
               </div>
@@ -33,7 +34,7 @@ const Footer = () => {
                   Home
                 </p>
                 <p className="text-gray-800 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-[#1A5319]">
-                  All Facilities
+                  All Recipies
                 </p>
                 <p className="text-gray-800 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-[#1A5319]">
                   About Me
@@ -51,9 +52,9 @@ const Footer = () => {
                Contact Us
                 </p>
                 <p className="text-gray-800 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-[#1A5319]">
-                  Sports Brand                  </p>
+                 Premium Recipe                </p>
                 <p className="text-gray-800 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-[#F1F3C2]">
-                  All Kits
+               Premium Users
                 </p>
               </div>
             </div>
@@ -116,7 +117,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="font-sans p-8 text-start md:text-center md:text-lg md:p-4">
-            © 2024 <span className="text-[#E8B86D] font-bold">SportSpace</span> Inc. All rights reserved.
+            © 2024 <span className="text-[#E8B86D] font-bold">PlatePal</span> Inc. All rights reserved.
           </p>
         </div>
       </footer>

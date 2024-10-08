@@ -10,9 +10,9 @@ const layout = ({ children }: { children: ReactNode }) => {
     <>
       <div >
         <NavBar></NavBar>
-        <div className="mx-auto container">{children}</div>
+        <div className="">{children}</div>
       </div>
-      <div className="mt-20">
+      <div >
         <Footer></Footer>
       </div>
     </>

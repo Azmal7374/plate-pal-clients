@@ -5,10 +5,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useRouter } from "next/navigation";
+import * as yup from "yup";
 import { Select, SelectItem } from "@nextui-org/select";
+import { yupResolver } from "@hookform/resolvers/yup";
 import dynamic from "next/dynamic";
 import { toast } from "sonner";
 import { useUser } from "@/src/utlis/useruser";
@@ -17,7 +17,7 @@ import { useCreateRecipe } from "@/src/hooks/recipe.hook";
 import Loading from "@/src/components/shared/Loading/Loading";
 
 
-const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
+const JoditEditor = dynamic(() => import('jodit-react').then(mod => mod.default), { ssr: false });
 
 // Define the validation schema using Yup
 const schema = yup.object().shape({
@@ -131,13 +131,15 @@ const CreateRecipe = () => {
 
         {/* Rich Text Editor */}
         <div className="flex flex-col border-2 border-[#F78014]">
-          <JoditEditor
-            ref={editor}
-            config={config}
-            value={content}
-            onBlur={handleEditorBlur}
-            onChange={() => {}}
-          />
+        {typeof window !== 'undefined' && (
+            <JoditEditor
+              ref={editor}
+              value={content}
+              config={config}
+              onBlur={handleEditorBlur}
+              onChange={() => {}}
+            />
+          )}
           {errors.content && (
             <p className="text-danger text-sm mt-1">Content is required.</p>
           )}

@@ -21,7 +21,6 @@ export default function NavbarDropdown() {
   const handleLogout = () => {
     logout();
     userLoading(true);
-
     router.push("/");
   };
 

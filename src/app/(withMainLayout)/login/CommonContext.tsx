@@ -83,7 +83,7 @@ const CommonContentLoginPage = () => {
 
                 <div className="mt-4">
                   <div className="flex justify-between">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                    <label className="block text-default-700 text-sm font-bold mb-2">
                       Password
                     </label>
                   </div>
@@ -120,12 +120,12 @@ const CommonContentLoginPage = () => {
                 </p>
 
                 <p className="text-lg text-default-900 mt-3">
-                Lost your password?{" "}
+                Lost your password? {" "}
                   <Link
                     className="hover:underline text-[#F78014]"
                     href="/forgot-password"
                   >
-                   No worries—reset it effortlessly here!
+                     No worries—reset it effortlessly here!
                   </Link>
                 </p>
               </div>
